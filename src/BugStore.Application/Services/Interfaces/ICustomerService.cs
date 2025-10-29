@@ -1,7 +1,12 @@
-﻿namespace BugStore.Application.Services.Interfaces;
+﻿using BugStore.Application.Services.Customers.Dto.Request;
+using BugStore.Application.Services.Customers.Dto.Response;
+
+namespace BugStore.Application.Services.Interfaces;
 public interface ICustomerService
 {
     Task<IEnumerable<CustomerDto>> GetAllAsync();
     Task<CustomerDto> GetByIdAsync(Guid id);
-    Task CreateAsync (Customer)
+    Task CreateAsync(CustomerDtoRequest customerRequest);
+    Task<CustomerDto> UpdateCustomerAsync(Guid id, CustomerDtoRequest dto);
+    Task<CustomerDto> DeleteCustomerAsync(Guid id);
 }

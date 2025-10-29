@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BugStore.Application\BugStore.Application.csproj" />
     <ProjectReference Include="..\BugStore.Infra\BugStore.Infra.csproj" />
   </ItemGroup>
 
