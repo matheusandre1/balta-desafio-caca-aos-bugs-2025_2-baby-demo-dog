@@ -30,7 +30,7 @@ public class ProductService(IRepository<Product> _productRepository,
         return _mapper.Map<ProductDto>(entity);
     }
 
-    public async Task<ProductDto> UpdateAgendaAsync(Guid id, ProductDtoRequest productDtoRequest)
+    public async Task<ProductDto> UpdateProductAsync(Guid id, ProductDtoRequest productDtoRequest)
     {
         var entity = await _productRepository.GetByIdAsync(id);
 
@@ -41,7 +41,7 @@ public class ProductService(IRepository<Product> _productRepository,
         return _mapper.Map<ProductDto>(entity);
     }
 
-    public async Task<ProductDto> DeleteAgendaAsync(Guid id)
+    public async Task<ProductDto> DeleteProductAsync(Guid id)
     {
         var entity = _productRepository.GetByIdAsync(id);
         await _productRepository.DeleteAsync(id);

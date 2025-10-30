@@ -34,7 +34,5 @@ public class MappingProfile : Profile
             .ForMember(d=>d.Id, opt=>opt.Ignore())
             .ForMember(d=>d.CreatedAt, opt=>opt.Ignore())
             .ForMember(d=>d.UpdateAt, opt=>opt.Ignore());
-
-
     }
 }

@@ -3,53 +3,41 @@ using BugStore.Infra.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace BugStore.Infra.Data;
-public class Repository<T> : IRepository<T> where T : class
-{
-    protected DbSet<T> Query { get; set; }
-    protected DbContext Context { get; set; }
-
-    public Repository(AppContextDb context)
-    {
-        Context = context;
-        Query = Context.Set<T>();
-    }
+public class Repository<T>(AppContextDb _context) : IRepository<T> where T : class
+{     
 
     public async Task AddAsync(T entity)
     {
-        await Query.AddAsync(entity);
-        await Context.SaveChangesAsync();
+        _context.Add(entity);
+        await _context.SaveChangesAsync();
     }
 
     public async Task<IEnumerable<T>> GetAllAsync()
     {
-        try
-        {
-            var consulta = await this.Query.ToListAsync();
-            return consulta;
-        }
-        catch (Exception ex)
-        {
-
-            throw new Exception(ex.Message);
-        }
+        return await _context.Set<T>().AsNoTracking().ToListAsync();
     }
 
     public async Task<T> GetByIdAsync(Guid id)
     {
-        return await Query.FindAsync(id);
+        var entity = await _context.Set<T>()
+            .AsNoTracking()
+            .FirstOrDefaultAsync(e=> EF.Property<Guid>(e, "Id") == id);
+
+        return entity!;
     }
 
     public async Task UpdateAsync(T entity)
     {
-        Query.Update(entity);
-        await Context.SaveChangesAsync();
+        _context.Set<T>().Update(entity);
+        await _context.SaveChangesAsync();
     }
 
     public async Task DeleteAsync(Guid id)
     {
-        var entity = await Query.FindAsync(id);
-        Query.Remove(entity);
-        await Context.SaveChangesAsync();
-    }
-}
+        var entity = await _context.Set<T>()
+            .FirstOrDefaultAsync(e => EF.Property<Guid>(e, "Id") == id);
 
+        _context.Set<T>().Remove(entity!);
+        await _context.SaveChangesAsync();
+    }   
+}

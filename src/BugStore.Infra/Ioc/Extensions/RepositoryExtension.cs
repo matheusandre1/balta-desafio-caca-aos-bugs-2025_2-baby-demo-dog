@@ -1,6 +1,6 @@
 ﻿using BugStore.Domain.Base;
+using BugStore.Infra.CompiledModels;
 using BugStore.Infra.Context;
-using BugStore.Infra.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,7 +14,10 @@ public static class InfraServiceCollectionExtensions
         var connectionString = configuration.GetConnectionString("Default") ?? "Data Source=bugstore.db";
 
         services.AddDbContext<AppContextDb>(options =>
-            options.UseSqlite(connectionString));
+        {
+            options.UseSqlite(connectionString);
+            options.UseModel(AppContextDbModel.Instance);
+        });
 
         services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 

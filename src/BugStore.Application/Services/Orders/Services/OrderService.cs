@@ -15,8 +15,8 @@ public class OrderService(IRepository<Order> _orderRepository, IRepository<Produ
 
         if(entity is null) throw new Exception("Order not found");
 
-        var dto = await OrderMethods.BuildDtoAsync(entity, _productRepository, _mapper);
-        return dto;
+        return await OrderMethods.BuildDtoAsync(entity, _productRepository, _mapper);
+      
     }
     public async Task CreateAsync(OrderRequest orderRequest)
     {
@@ -28,7 +28,7 @@ public class OrderService(IRepository<Order> _orderRepository, IRepository<Produ
 
         OrderMethods.EnsureLineIds(order);
         OrderMethods.AttachOrderIdToLines(order);
-
-        await _orderRepository.AddAsync(order);
+        
+        await _orderRepository.AddAsync(order);        
     }       
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BugStore.Infra.CompiledModels;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
 namespace BugStore.Infra.Context;
@@ -8,7 +9,11 @@ public class AppContextDbFactory : IDesignTimeDbContextFactory<AppContextDb>
     {
         var optionsBuilder = new DbContextOptionsBuilder<AppContextDb>();
 
-        optionsBuilder.UseSqlite("Data source=bugstore.db");
+        var connection = Environment.GetEnvironmentVariable("ConnectionStrings__Default") 
+            ?? "Data Source=bugstore.db";
+
+        optionsBuilder.UseSqlite(connection);
+        optionsBuilder.UseModel(AppContextDbModel.Instance);
 
         return new AppContextDb(optionsBuilder.Options);
     }

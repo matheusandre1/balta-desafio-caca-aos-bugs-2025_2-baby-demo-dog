@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugStore.Api", "BugStore.Api\BugStore.Api.csproj", "{369E3AE2-7C68-40B4-A284-377A897CB977}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugStore.Infra", "BugStore.Infra\BugStore.Infra.csproj", "{67C2BA46-D486-4CE6-A4EF-0FA36211A36F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugStore.Domain", "BugStore.Domain\BugStore.Domain.csproj", "{8C99870E-8DDE-4093-B8A3-9F96788EB53E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugStore.Application", "BugStore.Application\BugStore.Application.csproj", "{2707E8EB-A186-4392-B979-278311FF5EFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugStore.Api", "BugStore.Api\BugStore.Api.csproj", "{04026D3D-BDFF-4285-A8AD-3B59CF4EE5DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{369E3AE2-7C68-40B4-A284-377A897CB977}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{369E3AE2-7C68-40B4-A284-377A897CB977}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{369E3AE2-7C68-40B4-A284-377A897CB977}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{369E3AE2-7C68-40B4-A284-377A897CB977}.Release|Any CPU.Build.0 = Release|Any CPU
 		{67C2BA46-D486-4CE6-A4EF-0FA36211A36F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{67C2BA46-D486-4CE6-A4EF-0FA36211A36F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67C2BA46-D486-4CE6-A4EF-0FA36211A36F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{2707E8EB-A186-4392-B979-278311FF5EFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2707E8EB-A186-4392-B979-278311FF5EFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2707E8EB-A186-4392-B979-278311FF5EFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04026D3D-BDFF-4285-A8AD-3B59CF4EE5DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04026D3D-BDFF-4285-A8AD-3B59CF4EE5DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04026D3D-BDFF-4285-A8AD-3B59CF4EE5DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04026D3D-BDFF-4285-A8AD-3B59CF4EE5DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
