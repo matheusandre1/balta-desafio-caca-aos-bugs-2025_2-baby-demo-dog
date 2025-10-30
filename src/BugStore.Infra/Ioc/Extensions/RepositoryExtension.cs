@@ -1,6 +1,7 @@
 ﻿using BugStore.Domain.Base;
 using BugStore.Infra.CompiledModels;
 using BugStore.Infra.Context;
+using BugStore.Infra.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

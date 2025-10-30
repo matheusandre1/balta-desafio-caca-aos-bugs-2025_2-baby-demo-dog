@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BugStore.Infra.Migrations
 {
     [DbContext(typeof(AppContextDb))]
-    [Migration("20251029200934_InitialCreate")]
+    [Migration("20251030044042_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

@@ -1,3 +1,4 @@
+using BugStore.Application.Services;
 using BugStore.Application.Services.Customers.Dto.Request;
 using BugStore.Application.Services.Customers.Dto.Response;
 using BugStore.Application.Services.Dtos.OrderLines.Request;
@@ -7,14 +8,16 @@ using BugStore.Application.Services.Orders.Dto.Request;
 using BugStore.Application.Services.Orders.Dto.Response;
 using BugStore.Application.Services.Products.Dto.Request;
 using BugStore.Application.Services.Products.Dto.Response;
-using System.Text.Json.Serialization;
-using BugStore.Application.Services;
 using BugStore.Infra.IoC;
+using Microsoft.Extensions.DependencyInjection;
+using Scalar.AspNetCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateSlimBuilder(args);
 
 builder.Services.AddApplicationModule();
 builder.Services.AddInfraPersistence(builder.Configuration);
+builder.Services.AddOpenApi();
 
 builder.Services.ConfigureHttpJsonOptions(options =>
 {
@@ -23,8 +26,15 @@ builder.Services.ConfigureHttpJsonOptions(options =>
 
 var app = builder.Build();
 
-var customers = app.MapGroup("v1/products");
-var products = app.MapGroup("v1/customers");
+app.MapOpenApi();
+
+if (app.Environment.IsDevelopment())
+{
+    app.MapScalarApiReference();
+}
+
+var customers = app.MapGroup("v1/customers"); 
+var products = app.MapGroup("v1/products");
 var orders = app.MapGroup("v1/orders");
 
 #region Customer
